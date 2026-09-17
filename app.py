@@ -1,4 +1,6 @@
 from flask import Flask,request,render_template
+from otp import genotp
+from cmail import send_mail
 app=Flask(__name__)
 @app.route('/',methods=['GET'])
 def home():
@@ -10,6 +12,11 @@ def register():
         username=request.form.get('username').strip()
         useremail=request.form['useremail'].strip()
         userpasswor=request.form['userpassword']
+        server_otp=genotp() #'S6bE8m'
+        subject=f'User verification otp for Simple Notes Management system '
+        body=f'use the given otp for : {server_otp}'
+        send_mail(to=useremail,subject=subject,body=body)
+        return 'OTP has been sent to given mail'
     return render_template('register.html')
 @app.route('/login',methods=['GET','POST'])
 def login():
