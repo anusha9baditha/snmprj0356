@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NoteX - Register</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-section {
+            max-width: 480px;
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #6c757d;
+        }
+
+        .form-control {
+            height: 48px;
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #0d6efd;
+        }
+
+        .register-btn {
+            height: 48px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .image-section {
+            height: 100vh;
+            position: relative;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.05));
+        }
+
+        .image-content {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            color: white;
+        }
+
+        @media (max-width: 767px) {
+
+            .image-section {
+                display: none;
+            }
+
+            .form-section {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid p-0">
+
+        <div class="row g-0 min-vh-100">
+
+            <!-- LEFT SIDE -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center p-4">
+
+                <div class="form-section w-100">
+
+                    <!-- Brand -->
+                    <div class="text-center mb-5">
+
+                        <div class="brand">
+                            NoteX
+                        </div>
+
+                        <p class="subtitle mt-2 mb-0">
+                            Organize your thoughts. Save your ideas.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Heading -->
+                    <div class="mb-4">
+
+                        <h2 class="fw-bold">
+                            Create your account
+                        </h2>
+
+                        <p class="text-secondary">
+                            Start managing your notes in one place.
+                        </p>
+
+                    </div>
+
+
+                    <form action="/register" method="post">
+
+                        <!-- Username -->
+                        <div class="mb-3">
+
+                            <label for="username" class="form-label fw-semibold">
+                                Username
+                            </label>
+
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
+
+                        </div>
+
+
+                        <!-- Email -->
+                        <div class="mb-3">
+
+                            <label for="email" class="form-label fw-semibold">
+                                Email
+                            </label>
+
+                            <input type="email" id="email" name="useremail" class="form-control" placeholder="Enter your email" required>
+
+                        </div>
+
+
+                        <!-- Password -->
+                        <div class="mb-4">
+
+                            <label for="password" class="form-label fw-semibold">
+                                Password
+                            </label>
+
+                            <input type="password" id="password" name="userpassword" class="form-control" placeholder="Create a password" required>
+
+                        </div>
+
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-dark w-100 register-btn">
+
+                            Create Account
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- Login -->
+                    <p class="text-center text-secondary mt-4">
+
+                        Already have an account?
+
+                        <a href="login.html" class="text-decoration-none fw-semibold">
+                            Login
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="col-md-6">
+
+                <div class="image-section">
+
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=90"
+                        alt="Person writing notes">
+
+                    <div class="image-overlay"></div>
+
+                    <div class="image-content">
+
+                        <h2 class="fw-bold">
+                            Your ideas deserve a place.
+                        </h2>
+
+                        <p class="fs-5 mb-0">
+                            Capture, organize and access your notes
+                            whenever you need them.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <script>
+        function loginUser(event) {
+            event.preventDefault();
+            window.location.href = "home.html";
+        }
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForGlyvwx9H09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+
+</body>
+
+</html>

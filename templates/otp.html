@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NoteX - Verify OTP</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4efff;
+        }
+
+        .otp-wrapper {
+            min-height: 100vh;
+        }
+
+        .otp-card {
+            max-width: 480px;
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 15px 45px rgba(111, 66, 193, 0.12);
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: 700;
+            color: #6f42c1;
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: #f0e9ff;
+            color: #6f42c1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 25px;
+        }
+
+        .otp-input {
+            height: 60px;
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 8px;
+        }
+
+        .otp-input:focus {
+            border-color: #6f42c1;
+            box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.12);
+        }
+
+        .verify-btn {
+            height: 52px;
+            border-radius: 12px;
+            font-weight: 600;
+            background: #6f42c1;
+            border-color: #6f42c1;
+        }
+
+        .verify-btn:hover {
+            background: #59339d;
+            border-color: #59339d;
+        }
+
+        .purple-link {
+            color: #6f42c1;
+        }
+
+        .side-section {
+            background: #6f42c1;
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circle-one {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -120px;
+            right: -100px;
+        }
+
+        .circle-two {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            bottom: -80px;
+            left: -80px;
+        }
+
+        .side-content {
+            position: relative;
+            z-index: 2;
+            max-width: 450px;
+        }
+
+        .security-icon {
+            font-size: 70px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 767px) {
+            .side-section {
+                display: none;
+            }
+
+            .otp-card {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid p-0">
+
+        <div class="row g-0 otp-wrapper">
+
+            <!-- LEFT SIDE -->
+            <div class="col-md-7 d-flex justify-content-center align-items-center">
+
+                <div class="otp-card w-100">
+
+                    <!-- Brand -->
+                    <div class="text-center mb-4">
+                        <div class="brand">
+                            NoteX
+                        </div>
+                    </div>
+
+                    <!-- Icon -->
+                    <div class="icon-box">
+                        🔐
+                    </div>
+
+                    <!-- Heading -->
+                    <div class="text-center mb-4">
+
+                        <h2 class="fw-bold">
+                            Verify your account
+                        </h2>
+
+                        <p class="text-secondary mb-0">
+                            Enter the 6-digit verification code
+                            sent to your registered account.
+                        </p>
+
+                    </div>
+
+                    <form action="">
+
+                        <!-- OTP -->
+                        <div class="mb-4">
+
+                            <label for="otp"
+                                class="form-label fw-semibold">
+                                Verification Code
+                            </label>
+
+                            <input type="text"
+                                id="otp"
+                                class="form-control otp-input"
+                                maxlength="6"
+                                placeholder="••••••"
+                                inputmode="numeric"
+                                required>
+
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit"
+                            class="btn btn-primary w-100 verify-btn">
+
+                            Verify OTP
+
+                        </button>
+
+                    </form>
+
+                    <!-- Resend -->
+                    <div class="text-center mt-4">
+
+                        <p class="text-secondary mb-2">
+                            Didn't receive the code?
+                        </p>
+
+                        <a href="#"
+                            class="text-decoration-none fw-semibold purple-link">
+
+                            Resend OTP
+
+                        </a>
+
+                    </div>
+
+                    <!-- Back -->
+                    <div class="text-center mt-4">
+
+                        <a href="login.html"
+                            class="text-secondary text-decoration-none">
+
+                            ← Back to Login
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-md-5">
+
+                <div class="side-section d-flex
+                    justify-content-center
+                    align-items-center
+                    p-5">
+
+                    <div class="circle-one"></div>
+                    <div class="circle-two"></div>
+
+                    <div class="side-content">
+
+                        <div class="security-icon">
+                            🛡️
+                        </div>
+
+                        <h1 class="display-5 fw-bold">
+                            Your security matters.
+                        </h1>
+
+                        <p class="fs-5 mt-3 opacity-75">
+                            We use OTP verification to make sure
+                            your NoteX account stays secure and
+                            accessible only to you.
+                        </p>
+
+                        <div class="mt-4">
+
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="me-3">✓</span>
+                                Secure account verification
+                            </div>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="me-3">✓</span>
+                                Protected login process
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <span class="me-3">✓</span>
+                                Simple and fast verification
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>

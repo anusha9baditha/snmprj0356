@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NoteX - Home</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+
+    <style>
+
+        /* ================= BODY ================= */
+
+        body {
+            background-color: #f7f8fa;
+            color: #17212b;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar-custom {
+            background-color: #17212b;
+        }
+
+        .notex-logo {
+            width: 42px;
+            height: 42px;
+            background-color: #feedca;
+            color: #17212b;
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .brand-name {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .nav-link {
+            color: #e5e7eb !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #feedca !important;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .search-box {
+            width: 260px;
+            padding-left: 40px;
+            border-radius: 8px;
+            border: none;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero-section {
+            background-color: #feedca;
+            padding: 55px 0;
+        }
+
+        .hero-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c5a3b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 38px;
+            font-weight: 700;
+            color: #17212b;
+        }
+
+        .hero-text {
+            color: #4b5563;
+            max-width: 650px;
+        }
+
+        .hero-icon {
+            width: 105px;
+            height: 105px;
+            border-radius: 25px;
+            background-color: #17212b;
+            color: #feedca;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 48px;
+
+            box-shadow: 0 12px 30px rgba(23, 33, 43, .15);
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .section-title {
+            font-weight: 700;
+            color: #17212b;
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .stat-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            border-radius: 14px;
+            padding: 22px;
+
+            transition: .2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background-color: #feedca;
+            color: #17212b;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+        .stat-number {
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+
+        /* ================= ACTION CARDS ================= */
+
+        .action-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            border-radius: 14px;
+            padding: 25px;
+
+            height: 100%;
+
+            transition: .2s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+        }
+
+        .action-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+
+            background-color: #17212b;
+            color: #feedca;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+        .action-card h5 {
+            font-weight: 700;
+            margin-top: 18px;
+        }
+
+        .action-card p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .table-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .table tbody td {
+            padding: 16px 15px;
+            vertical-align: middle;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tbody tr:hover {
+            background-color: #fafafa;
+        }
+
+
+        /* ================= BADGES ================= */
+
+        .note-badge {
+            background-color: #feedca;
+            color: #5b4a2e;
+            font-weight: 500;
+        }
+
+        .file-badge {
+            background-color: #eef1f4;
+            color: #17212b;
+            font-weight: 500;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #17212b;
+            color: #d1d5db;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-wrapper {
+                margin-top: 10px;
+            }
+
+        }
+
+        @media (max-width: 767px) {
+
+            .hero-section {
+                padding: 40px 0;
+            }
+
+            .hero-title {
+                font-size: 30px;
+            }
+
+            .hero-icon {
+                width: 85px;
+                height: 85px;
+                font-size: 38px;
+                margin-top: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-custom py-3">
+
+        <div class="container">
+
+
+            <!-- BRAND -->
+
+            <a href="#" class="navbar-brand d-flex align-items-center gap-2">
+
+                <div class="notex-logo">
+                    N
+                </div>
+
+                <span class="brand-name">
+                    NoteX
+                </span>
+
+            </a>
+
+
+            <!-- MOBILE TOGGLE -->
+
+            <button class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+
+                    <!-- HOME -->
+
+                    <li class="nav-item">
+
+                        <a href="home.html" class="nav-link">
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <!-- NOTES -->
+
+                    <li class="nav-item dropdown">
+
+                        <a href="#"
+                            class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">
+
+                            Notes
+
+                        </a>
+
+                        <ul class="dropdown-menu shadow-sm">
+
+                            <li>
+                                <a href="add_notes.html" class="dropdown-item">
+                                    <i class="fa-solid fa-plus me-2"></i>
+                                    Add Notes
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="all_notes.html" class="dropdown-item">
+                                    <i class="fa-solid fa-note-sticky me-2"></i>
+                                    View All Notes
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa-solid fa-file-excel me-2"></i>
+                                    Get Excel Data
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- FILES -->
+
+                    <li class="nav-item dropdown">
+
+                        <a href="#"
+                            class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">
+
+                            Files
+
+                        </a>
+
+                        <ul class="dropdown-menu shadow-sm">
+
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa-solid fa-upload me-2"></i>
+                                    Upload File
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="all_files.html" class="dropdown-item">
+                                    <i class="fa-solid fa-folder-open me-2"></i>
+                                    View All Files
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- SEARCH -->
+
+                    <li class="nav-item ms-lg-3">
+
+                        <form>
+
+                            <div class="search-wrapper">
+
+                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                <input type="search"
+                                    class="form-control search-box"
+                                    placeholder="Search notes or files...">
+
+                            </div>
+
+                        </form>
+
+                    </li>
+
+
+                    <!-- PROFILE -->
+
+                    <li class="nav-item dropdown ms-lg-2">
+
+                        <a href="#"
+                            class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">
+
+                            <i class="fa-solid fa-user me-1"></i>
+                            Profile
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa-regular fa-user me-2"></i>
+                                    My Profile
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fa-solid fa-gear me-2"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a href="welcome.html" class="dropdown-item text-danger">
+                                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                    Logout
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================================================= -->
+    <!-- HERO / WELCOME -->
+    <!-- ================================================= -->
+
+    <section class="hero-section">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-9">
+
+                    <div class="hero-label mb-2">
+                        Your Personal Workspace
+                    </div>
+
+                    <h1 class="hero-title mb-3">
+                        Welcome back to NoteX
+                    </h1>
+
+                    <p class="hero-text lead mb-4">
+                        Keep your notes, documents, and important information
+                        organized in one simple and secure workspace.
+                    </p>
+
+                    <div class="d-flex gap-2 flex-wrap">
+
+                        <a href="add_notes.html" class="btn btn-dark px-4 py-2">
+
+                            <i class="fa-solid fa-plus me-2"></i>
+
+                            Add Note
+
+                        </a>
+
+                        <a href="#" class="btn btn-outline-dark px-4 py-2">
+
+                            <i class="fa-solid fa-upload me-2"></i>
+
+                            Upload File
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 d-flex justify-content-lg-end justify-content-center">
+
+                    <div class="hero-icon">
+
+                        <i class="fa-regular fa-note-sticky"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================================= -->
+
+    <main class="container py-5">
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h3 class="section-title mb-0">
+                Overview
+            </h3>
+
+        </div>
+
+
+        <div class="row g-4 mb-5">
+
+
+            <!-- NOTES -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between align-items-start">
+
+                        <div>
+
+                            <div class="stat-label">
+                                Total Notes
+                            </div>
+
+                            <div class="stat-number">
+                                24
+                            </div>
+
+                        </div>
+
+                        <div class="stat-icon">
+
+                            <i class="fa-regular fa-note-sticky"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILES -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between align-items-start">
+
+                        <div>
+
+                            <div class="stat-label">
+                                Total Files
+                            </div>
+
+                            <div class="stat-number">
+                                12
+                            </div>
+
+                        </div>
+
+                        <div class="stat-icon">
+
+                            <i class="fa-regular fa-folder"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORIES -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between align-items-start">
+
+                        <div>
+
+                            <div class="stat-label">
+                                Categories
+                            </div>
+
+                            <div class="stat-number">
+                                8
+                            </div>
+
+                        </div>
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STORAGE -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between align-items-start">
+
+                        <div>
+
+                            <div class="stat-label">
+                                Storage Used
+                            </div>
+
+                            <div class="stat-number">
+                                32 MB
+                            </div>
+
+                        </div>
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-database"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h3 class="section-title mb-0">
+                Quick Actions
+            </h3>
+
+        </div>
+
+
+        <div class="row g-4 mb-5">
+
+
+            <!-- ADD NOTE -->
+
+            <div class="col-md-4">
+
+                <div class="action-card d-flex flex-column">
+
+                    <div class="action-icon">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </div>
+
+                    <h5>
+                        Create a New Note
+                    </h5>
+
+                    <p>
+                        Quickly create a new note and keep your ideas,
+                        tasks, and important information organized.
+                    </p>
+
+                    <a href="#" class="btn btn-dark mt-auto">
+                        Create Note
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIEW NOTES -->
+
+            <div class="col-md-4">
+
+                <div class="action-card d-flex flex-column">
+
+                    <div class="action-icon">
+
+                        <i class="fa-regular fa-note-sticky"></i>
+
+                    </div>
+
+                    <h5>
+                        View Your Notes
+                    </h5>
+
+                    <p>
+                        Browse all your notes, search for information,
+                        and edit or update your existing notes.
+                    </p>
+
+                    <a href="#" class="btn btn-dark mt-auto">
+                        View Notes
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILES -->
+
+            <div class="col-md-4">
+
+                <div class="action-card d-flex flex-column">
+
+                    <div class="action-icon">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    </div>
+
+                    <h5>
+                        Manage Your Files
+                    </h5>
+
+                    <p>
+                        Upload documents and manage all your important
+                        files from one convenient location.
+                    </p>
+
+                    <a href="#" class="btn btn-dark mt-auto">
+                        Manage Files
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECENT NOTES ================= -->
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h3 class="section-title mb-0">
+                Recent Notes
+            </h3>
+
+            <a href="#" class="btn btn-outline-dark btn-sm">
+                View All
+            </a>
+
+        </div>
+
+
+        <div class="table-card shadow-sm mb-5">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Note
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Last Updated
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-regular fa-note-sticky me-2 text-secondary"></i>
+
+                                Python Programming
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge note-badge">
+                                    Programming
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Today
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-regular fa-note-sticky me-2 text-secondary"></i>
+
+                                SQL Queries
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge note-badge">
+                                    Database
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Yesterday
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-regular fa-note-sticky me-2 text-secondary"></i>
+
+                                React Concepts
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge note-badge">
+                                    Development
+                                </span>
+
+                            </td>
+
+                            <td>
+                                2 days ago
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECENT FILES ================= -->
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h3 class="section-title mb-0">
+                Recent Files
+            </h3>
+
+            <a href="#" class="btn btn-outline-dark btn-sm">
+                View All
+            </a>
+
+        </div>
+
+
+        <div class="table-card shadow-sm">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                File
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Size
+                            </th>
+
+                            <th>
+                                Uploaded
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-solid fa-file-pdf me-2 text-danger"></i>
+
+                                Python Notes.pdf
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge file-badge">
+                                    PDF
+                                </span>
+
+                            </td>
+
+                            <td>
+                                2.4 MB
+                            </td>
+
+                            <td>
+                                Today
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-solid fa-file-excel me-2 text-success"></i>
+
+                                SQL Queries.xlsx
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge file-badge">
+                                    Excel
+                                </span>
+
+                            </td>
+
+                            <td>
+                                850 KB
+                            </td>
+
+                            <td>
+                                Yesterday
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="fw-semibold">
+
+                                <i class="fa-solid fa-file-word me-2 text-primary"></i>
+
+                                React Guide.docx
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge file-badge">
+                                    Word
+                                </span>
+
+                            </td>
+
+                            <td>
+                                1.2 MB
+                            </td>
+
+                            <td>
+                                3 days ago
+                            </td>
+
+                            <td>
+
+                                <a href="#" class="btn btn-sm btn-outline-dark">
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================================================= -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <footer class="text-center py-4 mt-5">
+
+        <p class="mb-1 fw-semibold">
+            NoteX
+        </p>
+
+        <small>
+            Organize your notes. Manage your files. Stay productive.
+        </small>
+
+        <p class="mb-0 mt-2 small">
+            © 2026 NoteX. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
