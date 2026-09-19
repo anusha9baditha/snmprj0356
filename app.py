@@ -1,23 +1,44 @@
 from flask import Flask,request,render_template
 from otp import genotp
 from cmail import send_mail
+from datetime import datetime,timedelta
+import mysql.connector
+mydb=mysql.connector.connect(user='root',host='localhost',password='admin',database='snmprojectdb')
 app=Flask(__name__)
 @app.route('/',methods=['GET'])
 def home():
     return render_template('welcome.html')
 @app.route('/register',methods=['GET','POST'])
 def register():
-    if request.method=='POST':
-        print(request.form) #immutablemultidict
-        username=request.form.get('username').strip()
-        useremail=request.form['useremail'].strip()
-        userpasswor=request.form['userpassword']
-        server_otp=genotp() #'S6bE8m'
-        subject=f'User verification otp for Simple Notes Management system '
-        body=f'use the given otp for : {server_otp}'
-        send_mail(to=useremail,subject=subject,body=body)
-        return 'OTP has been sent to given mail'
-    return render_template('register.html')
+    try:
+        if request.method=='POST':
+            print(request.form) #immutablemultidict
+            username=request.form.get('username').strip()
+            useremail=request.form['useremail'].strip()
+            userpassword=request.form['userpassword']
+            server_otp=genotp() #'S6bE8m'
+            otp_expiry_time=datetime.now()+timedelta(minutes=5) #10+5==10.5
+            cursor=mydb.cursor()
+            cursor.execute('select userid,account_status,otp_expiry_time from userdata where useremail=%s',[useremail])
+            db_response=cursor.fetchone() #(1,'active','')#case 1:101,'active',case2:101,'inactive','otp expired',case3:101,'inactive',otp has time
+            print(db_response) #none
+            if db_response:
+                if db_response[1]=='active':
+                    return 'user already existed'
+                elif db_response[1]=='inactive' and otp_expiry_time > db_response[2]:
+                    cursor.execute('update userdata set username=%s,userpassword=%s,otp=%s,otp_expiry_time=%s,account_status=%s where useremail=%s',[username,userpassword,server_otp,otp_expiry_time,'inactive',useremail])
+            else:
+                cursor.execute('insert into userdata(username,useremail,userpassword,otp,otp_expiry_time,account_status) values(%s,%s,%s,%s,%s,%s)',[username,useremail,userpassword,server_otp,otp_expiry_time,'inactive'])
+            mydb.commit()
+            cursor.close()
+            subject=f'User verification otp for Simple Notes Management system '
+            body=f'use the given otp for : {server_otp}'
+            send_mail(to=useremail,subject=subject,body=body)
+            return 'OTP has been sent to given mail'
+        return render_template('register.html')
+    except Exception as e:
+        print('Mysql Error',str(e))
+        return 'could not stored user details'
 @app.route('/login',methods=['GET','POST'])
 def login():
     return render_template('login.html')
