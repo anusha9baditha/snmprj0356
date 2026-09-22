@@ -1,10 +1,11 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,redirect,url_for,flash
 from otp import genotp
 from cmail import send_mail
 from datetime import datetime,timedelta
 import mysql.connector
 mydb=mysql.connector.connect(user='root',host='localhost',password='admin',database='snmprojectdb')
 app=Flask(__name__)
+app.secret_key=b'[\x99\xb2(\x82'
 @app.route('/',methods=['GET'])
 def home():
     return render_template('welcome.html')
@@ -24,7 +25,8 @@ def register():
             print(db_response) #none
             if db_response:
                 if db_response[1]=='active':
-                    return 'user already existed'
+                    flash('user already existed')
+                    return redirect(url_for('register'))
                 elif db_response[1]=='inactive' and otp_expiry_time > db_response[2]:
                     cursor.execute('update userdata set username=%s,userpassword=%s,otp=%s,otp_expiry_time=%s,account_status=%s where useremail=%s',[username,userpassword,server_otp,otp_expiry_time,'inactive',useremail])
             else:
@@ -34,16 +36,44 @@ def register():
             subject=f'User verification otp for Simple Notes Management system '
             body=f'use the given otp for : {server_otp}'
             send_mail(to=useremail,subject=subject,body=body)
-            return 'OTP has been sent to given mail'
+            flash('OTP has been sent to given mail')
+            return redirect(url_for('otpverify',useremail=useremail))
         return render_template('register.html')
     except Exception as e:
         print('Mysql Error',str(e))
-        return 'could not stored user details'
+        flash('Could not store user details')
+        return redirect(url_for('register'))
 @app.route('/login',methods=['GET','POST'])
 def login():
     return render_template('login.html')
-@app.route('/otpverify',methods=['GET','POST'])
-def otpverify():
+@app.route('/otpverify/<useremail>',methods=['GET','POST'])
+def otpverify(useremail):
+    if request.method=='POST':
+        userotp=request.form['userotp']
+        user_otp_time=datetime.now()
+        cursor=mydb.cursor(buffered=True)
+        cursor.execute('select userid,account_status,otp,otp_expiry_time from userdata where useremail=%s',[useremail])
+        db_response=cursor.fetchone() 
+        print(db_response) #none
+        if db_response:
+            if db_response[1]=='active':
+                flash('user already existed')
+                return redirect(url_for('otpverify',useremail=useremail))
+            elif db_response[1]=='inactive' and user_otp_time > db_response[3]:
+                flash('OTP expired')
+                return redirect(url_for('otpverify',useremail=useremail))
+            elif db_response[1]=='inactive' and user_otp_time <db_response[3]:
+                if db_response[2]==userotp:
+                    cursor.execute('update userdata set otp=null,otp_expiry_time=null,account_status=%s where useremail=%s',['active',useremail])
+                    mydb.commit()
+                    flash('OTP Verified')
+                    return redirect(url_for('login'))
+                else:
+                    flash('OTP Invalid pls try again')
+                    return redirect(url_for('otpverify',useremail=useremail))
+        else:
+            flash('User Not found in DB')
+            return redirect(url_for('otpverify',useremail=useremail))
     return render_template('otp.html')
 @app.route('/dashboard',methods=['GET'])
 def dashboard():
