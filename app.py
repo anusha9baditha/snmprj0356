@@ -45,6 +45,26 @@ def register():
         return redirect(url_for('register'))
 @app.route('/login',methods=['GET','POST'])
 def login():
+    if request.method=='POST':
+        login_email=request.form['useremail']
+        login_password=request.form['userpassword']
+        cursor=mydb.cursor(buffered=True)
+        cursor.execute('select account_status,userpassword from userdata where useremail=%s',[login_email])
+        data=cursor.fetchone() #('active','123')
+        if data:
+            if data[0]=='active':
+                if data[1]==login_password:
+                    flash('Login Successfull')
+                    return redirect(url_for('dashboard'))
+                else:
+                    flash('Password Invalid')
+                    return redirect(url_for('login'))
+            elif data[0]=='inactive':
+                flash('pls verify account using otp')
+                return redirect(url_for('otpverify',useremail=login_email))
+        else:
+            flash('No user found')
+            return redirect(url_for('register'))
     return render_template('login.html')
 @app.route('/otpverify/<useremail>',methods=['GET','POST'])
 def otpverify(useremail):
