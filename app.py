@@ -1,5 +1,6 @@
 from flask import Flask,request,render_template,redirect,url_for,flash,session,send_file
 from io import BytesIO
+from stoken import endata,dndata
 import flask_excel as excel
 from flask_session import Session #security layer to create server side session
 from otp import genotp
@@ -359,7 +360,7 @@ def forgot():
                 flash('User is Suspended')
                 return redirect(url_for('home'))
             if user_status[0]=='active':
-                resetlink=f"Use the given link for forgot password {url_for('newpassword',useremail=forgot_email,_external=True)}"
+                resetlink=f"Use the given link for forgot password {url_for('newpassword',useremail=endata(forgot_email),_external=True)}"
                 subject='ResetLink for SNM Project'
                 send_mail(to=forgot_email,body=resetlink,subject=subject)
                 flash('Resetlink has been sent to given mail')
