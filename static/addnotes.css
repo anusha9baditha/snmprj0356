@@ -1,0 +1,29 @@
+      .add-note-card {
+          max-width: 750px;
+          margin: 60px auto;
+          background-color: white;
+          border-radius: 15px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .form-control {
+          padding: 12px;
+          border-radius: 8px;
+      }
+
+      textarea {
+          min-height: 300px;
+          resize: vertical;
+      }
+
+      .btn-submit {
+          background-color: #17212b;
+          color: white;
+          padding: 12px 30px;
+          border-radius: 8px;
+      }
+
+      .btn-submit:hover {
+          background-color: #feedca;
+          color: #17212b;
+      }

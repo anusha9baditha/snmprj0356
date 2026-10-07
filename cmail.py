@@ -4,7 +4,7 @@ def send_mail(to,subject,body):
     server=None
     try:
         server=smtplib.SMTP_SSL('smtp.gmail.com',465) #creating object to gmail server using port number
-        server.login('anusha@codegnan.com','xfjg nbej hirf lqbi')
+        server.login('anusha@codegnan.com','taxf wkwt qpaq pdtp')
         msg=EmailMessage()
         msg['FROM']='anusha@codegnan.com'
         msg['TO']=to

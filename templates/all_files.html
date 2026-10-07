@@ -154,7 +154,13 @@
                         </h2>
 
                         <p class="mb-0 text-light">
-                            Manage all your uploaded files
+                              {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                <b style="color: burlywood;" >{{message }}</b>
+                                {% endfor %}
+                            {% endif %}
+                            {% endwith %}
                         </p>
                     </div>
 
@@ -167,7 +173,7 @@
 
             </div>
 
-
+            {% if filesdata %}
             <!-- Table -->
             <div class="table-responsive">
 
@@ -186,202 +192,53 @@
                     </thead>
 
                     <tbody>
-
+                        {% for i in filesdata %}
                         <!-- File 1 -->
                         <tr>
 
-                            <td>1</td>
+                            <td>{{i[0]}}</td>
 
                             <td>
                                 <span class="file-icon">
                                     <i class="fa-solid fa-file-pdf"></i>
                                 </span>
-                                Python Notes.pdf
+                                {{i[1]}}
                             </td>
 
-                            <td>PDF</td>
+                            <td>{{i[1].split('.')[-1]}}</td>
 
-                            <td>15 Sep 2026, 10:30 AM</td>
+                            <td>{{i[2]}}</td>
 
                             <td class="text-center">
 
-                                <a href="#" class="btn btn-sm btn-view action-btn me-1">
+                                <a href="{{url_for('viewfile',fileid=i[0])}}" class="btn btn-sm btn-view action-btn me-1">
                                     <i class="fa-solid fa-eye me-1"></i>
                                     View
                                 </a>
 
-                                <a href="#" class="btn btn-sm btn-download action-btn me-1">
+                                <a href="{{url_for('downloadfile',fileid=i[0])}}" class="btn btn-sm btn-download action-btn me-1">
                                     <i class="fa-solid fa-download me-1"></i>
                                     Download
                                 </a>
 
-                                <button type="button" class="btn btn-sm btn-delete action-btn">
+                                <a href="{{url_for('deletefile',fileid=i[0])}}" class="btn btn-sm btn-delete action-btn">
                                     <i class="fa-solid fa-trash me-1"></i>
                                     Delete
-                                </button>
+                                </a>
 
                             </td>
 
                         </tr>
 
-
-                        <!-- File 2 -->
-                        <tr>
-
-                            <td>2</td>
-
-                            <td>
-                                <span class="file-icon">
-                                    <i class="fa-solid fa-file-excel"></i>
-                                </span>
-                                SQL Queries.xlsx
-                            </td>
-
-                            <td>Excel</td>
-
-                            <td>14 Sep 2026, 04:15 PM</td>
-
-                            <td class="text-center">
-
-                                <a href="#" class="btn btn-sm btn-view action-btn me-1">
-                                    <i class="fa-solid fa-eye me-1"></i>
-                                    View
-                                </a>
-
-                                <a href="#" class="btn btn-sm btn-download action-btn me-1">
-                                    <i class="fa-solid fa-download me-1"></i>
-                                    Download
-                                </a>
-
-                                <button type="button" class="btn btn-sm btn-delete action-btn">
-                                    <i class="fa-solid fa-trash me-1"></i>
-                                    Delete
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- File 3 -->
-                        <tr>
-
-                            <td>3</td>
-
-                            <td>
-                                <span class="file-icon">
-                                    <i class="fa-solid fa-file-word"></i>
-                                </span>
-                                React Guide.docx
-                            </td>
-
-                            <td>Word</td>
-
-                            <td>13 Sep 2026, 11:20 AM</td>
-
-                            <td class="text-center">
-
-                                <a href="#" class="btn btn-sm btn-view action-btn me-1">
-                                    <i class="fa-solid fa-eye me-1"></i>
-                                    View
-                                </a>
-
-                                <a href="#" class="btn btn-sm btn-download action-btn me-1">
-                                    <i class="fa-solid fa-download me-1"></i>
-                                    Download
-                                </a>
-
-                                <button type="button" class="btn btn-sm btn-delete action-btn">
-                                    <i class="fa-solid fa-trash me-1"></i>
-                                    Delete
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- File 4 -->
-                        <tr>
-
-                            <td>4</td>
-
-                            <td>
-                                <span class="file-icon">
-                                    <i class="fa-solid fa-file-powerpoint"></i>
-                                </span>
-                                DSA Presentation.pptx
-                            </td>
-
-                            <td>PowerPoint</td>
-
-                            <td>12 Sep 2026, 09:45 AM</td>
-
-                            <td class="text-center">
-
-                                <a href="#" class="btn btn-sm btn-view action-btn me-1">
-                                    <i class="fa-solid fa-eye me-1"></i>
-                                    View
-                                </a>
-
-                                <a href="#" class="btn btn-sm btn-download action-btn me-1">
-                                    <i class="fa-solid fa-download me-1"></i>
-                                    Download
-                                </a>
-
-                                <button type="button" class="btn btn-sm btn-delete action-btn">
-                                    <i class="fa-solid fa-trash me-1"></i>
-                                    Delete
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <!-- File 5 -->
-                        <tr>
-
-                            <td>5</td>
-
-                            <td>
-                                <span class="file-icon">
-                                    <i class="fa-solid fa-file-image"></i>
-                                </span>
-                                Project Screenshot.png
-                            </td>
-
-                            <td>Image</td>
-
-                            <td>10 Sep 2026, 03:30 PM</td>
-
-                            <td class="text-center">
-
-                                <a href="#" class="btn btn-sm btn-view action-btn me-1">
-                                    <i class="fa-solid fa-eye me-1"></i>
-                                    View
-                                </a>
-
-                                <a href="#" class="btn btn-sm btn-download action-btn me-1">
-                                    <i class="fa-solid fa-download me-1"></i>
-                                    Download
-                                </a>
-
-                                <button type="button" class="btn btn-sm btn-delete action-btn">
-                                    <i class="fa-solid fa-trash me-1"></i>
-                                    Delete
-                                </button>
-
-                            </td>
-
-                        </tr>
+                        {% endfor %}
+                       
 
                     </tbody>
 
                 </table>
 
             </div>
-
+            {% endif %}
         </div>
 
     </div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for i in data %}
+    <h1>Name: {{i[1]}}, LapId: {{i[2]}}</h1>
+    {% endfor %}
+
+
+
+
+
+
+
+    {#
+    <p> Hello All This is {{name}}</p>
+    {% if age > 18 and age <50 %}
+        <p>Eligible </p>
+        {% if age %2==0 %}
+            <p>Eligible with benifit</p>
+        {% endif %}
+    {% elif age <70 and age >50 %}
+        <p>Strongly Eligible</p>
+    {% else %}
+        <p>Not Eligible</p>
+    {% endif %}
+
+    #}
+</body>
+</html>
